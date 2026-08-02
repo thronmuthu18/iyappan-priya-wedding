@@ -1,50 +1,53 @@
-import { db } from '@/lib/firebase'
-import { collection, addDoc } from 'firebase/firestore'
-
 export interface RSVPData {
   name: string
-  email: string
+  phone: string
   attendance: 'attending' | 'declined'
-  guestsCount: number
+  guestsCount?: number
   guestNames?: string
-  diet?: string
   message?: string
 }
 
-export async function submitRSVP(data: RSVPData): Promise<void> {
-  const isMock = !import.meta.env.VITE_FIREBASE_PROJECT_ID || import.meta.env.VITE_FIREBASE_PROJECT_ID === 'mock-project-id'
+export const WHATSAPP_PHONE_NUMBER = '917502902121'
 
-  if (isMock) {
-    console.log("Firebase not configured. Falling back to local storage buffer.")
-    return new Promise((resolve) => {
-      setTimeout(() => {
-        const currentRsvps = JSON.parse(localStorage.getItem('wedding_rsvps') || '[]')
-        currentRsvps.push({
-          ...data,
-          submittedAt: new Date().toISOString(),
-        })
-        localStorage.setItem('wedding_rsvps', JSON.stringify(currentRsvps))
-        resolve()
-      }, 1200)
-    })
+export function generateWhatsAppRSVPMessage(data: RSVPData): string {
+  const isAttending = data.attendance === 'attending'
+  const attendanceText = isAttending ? 'Yes' : 'No'
+  
+  let guestsText = '0'
+  if (isAttending) {
+    const totalCount = (data.guestsCount || 0) + 1
+    if (data.guestNames && data.guestNames.trim()) {
+      guestsText = `${totalCount} (${data.guestNames.trim()})`
+    } else {
+      guestsText = `${totalCount}`
+    }
   }
 
-  // Real Firestore submit
-  try {
-    const rsvpCollection = collection(db, 'rsvps')
-    await addDoc(rsvpCollection, {
-      ...data,
-      submittedAt: new Date().toISOString()
-    })
-  } catch (error) {
-    console.error("Firestore submission failed. Saving to local storage backup.", error)
-    // Fallback save to local storage on network/connection failure
-    const offlineRsvps = JSON.parse(localStorage.getItem('offline_rsvps') || '[]')
-    offlineRsvps.push({
-      ...data,
-      submittedAt: new Date().toISOString()
-    })
-    localStorage.setItem('offline_rsvps', JSON.stringify(offlineRsvps))
-    throw error // Re-throw so form shows error notifications
+  const messageText = data.message && data.message.trim() ? data.message.trim() : 'None'
+
+  return `💍 New Wedding RSVP
+
+👤 Name:
+${data.name}
+
+📱 Phone:
+${data.phone}
+
+👥 Number of Guests:
+${guestsText}
+
+✅ Will Attend:
+${attendanceText}
+
+💬 Message:
+${messageText}`
+}
+
+export function submitRSVP(data: RSVPData): void {
+  const text = generateWhatsAppRSVPMessage(data)
+  const whatsappUrl = `https://wa.me/${WHATSAPP_PHONE_NUMBER}?text=${encodeURIComponent(text)}`
+  
+  if (typeof window !== 'undefined') {
+    window.open(whatsappUrl, '_blank', 'noopener,noreferrer')
   }
 }

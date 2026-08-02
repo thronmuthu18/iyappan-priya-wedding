@@ -1,17 +1,18 @@
-import { Suspense, lazy } from 'react'
+import { Suspense, lazy, useEffect } from 'react'
 import { Loader } from '@/components/sections/Loader'
 import { Hero } from '@/components/sections/Hero'
 import { Couple } from '@/components/sections/Couple'
 import { Navbar } from '@/components/navigation'
 import { MusicPlayer } from '@/components/shared'
 import { useSmoothScroll } from '@/hooks'
+import { useUIStore } from '@/store'
 
-// Lazy load below-the-fold components directly from their modules to enable full code-splitting
+// Lazy load components
 const Story = lazy(() => import('@/components/sections/Story').then(m => ({ default: m.Story })))
 const Timeline = lazy(() => import('@/components/sections/Timeline').then(m => ({ default: m.Timeline })))
-const Gallery = lazy(() => import('@/components/sections/Gallery').then(m => ({ default: m.Gallery })))
 const Events = lazy(() => import('@/components/sections/Events').then(m => ({ default: m.Events })))
 const Countdown = lazy(() => import('@/components/sections/Countdown').then(m => ({ default: m.Countdown })))
+const Gallery = lazy(() => import('@/components/sections/Gallery').then(m => ({ default: m.Gallery })))
 const Family = lazy(() => import('@/components/sections/Family').then(m => ({ default: m.Family })))
 const Venue = lazy(() => import('@/components/sections/Venue').then(m => ({ default: m.Venue })))
 const RSVP = lazy(() => import('@/components/sections/RSVP').then(m => ({ default: m.RSVP })))
@@ -23,6 +24,20 @@ const SectionPlaceholder = () => (
 
 function App() {
   useSmoothScroll()
+  const { language } = useUIStore()
+
+  useEffect(() => {
+    if (language === 'ta') {
+      let link = document.getElementById('tamil-font-link') as HTMLLinkElement
+      if (!link) {
+        link = document.createElement('link')
+        link.id = 'tamil-font-link'
+        link.rel = 'stylesheet'
+        link.href = 'https://fonts.googleapis.com/css2?family=Noto+Sans+Tamil:wght@300;400;500;600;700&display=swap'
+        document.head.appendChild(link)
+      }
+    }
+  }, [language])
 
   return (
     <>
@@ -46,17 +61,12 @@ function App() {
         <Story />
       </Suspense>
 
-      {/* Scroll-filling Milestones Timeline */}
+      {/* Scroll-filling Milestones Timeline representing 11 Years Journey */}
       <Suspense fallback={<SectionPlaceholder />}>
         <Timeline />
       </Suspense>
 
-      {/* Modern Asymmetrical Photo Gallery */}
-      <Suspense fallback={<SectionPlaceholder />}>
-        <Gallery />
-      </Suspense>
-
-      {/* Double Column Event Details */}
+      {/* Double Column Event Details (Engagement, Mehendi, Wedding) */}
       <Suspense fallback={<SectionPlaceholder />}>
         <Events />
       </Suspense>
@@ -66,7 +76,12 @@ function App() {
         <Countdown />
       </Suspense>
 
-      {/* Loved family and wedding party list */}
+      {/* Modern Asymmetrical Photo Gallery */}
+      <Suspense fallback={<SectionPlaceholder />}>
+        <Gallery />
+      </Suspense>
+
+      {/* Parents Section */}
       <Suspense fallback={<SectionPlaceholder />}>
         <Family />
       </Suspense>
@@ -81,7 +96,7 @@ function App() {
         <RSVP />
       </Suspense>
 
-      {/* Closing brand signature footer */}
+      {/* Closing brand signature footer (Blessings / Thank you) */}
       <Suspense fallback={<SectionPlaceholder />}>
         <Footer />
       </Suspense>

@@ -7,7 +7,9 @@ describe('cn utility', () => {
   })
 
   it('should handle conditional classes', () => {
-    expect(cn('class1', true && 'class2', false && 'class3')).toBe('class1 class2')
+    const isTrue = Boolean(1)
+    const isFalse = Boolean(0)
+    expect(cn('class1', isTrue && 'class2', isFalse && 'class3')).toBe('class1 class2')
   })
 
   it('should resolve tailwind overrides', () => {

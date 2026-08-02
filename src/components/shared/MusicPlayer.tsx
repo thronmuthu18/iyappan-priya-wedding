@@ -2,13 +2,14 @@ import React, { useEffect, useRef, useState } from 'react'
 import { motion } from 'framer-motion'
 import { useUIStore } from '@/store'
 import { VolumeX } from 'lucide-react'
+import { weddingConfig } from '@/config/wedding.config'
 
 export const MusicPlayer: React.FC = () => {
   const { musicEnabled, setMusicEnabled } = useUIStore()
   const [isPlaying, setIsPlaying] = useState(false)
   const audioRef = useRef<HTMLAudioElement>(null)
 
-  const audioUrl = "https://assets.codepen.io/4358584/An+Endless+Sigh.mp3"
+  const audioUrl = weddingConfig.music.backgroundTrack
 
   useEffect(() => {
     const audio = audioRef.current
@@ -39,8 +40,8 @@ export const MusicPlayer: React.FC = () => {
   if (musicEnabled === null) return null
 
   return (
-    <div className="fixed bottom-10 left-10 z-[200]">
-      {/* Hidden audio element */}
+    <div className="fixed bottom-6 left-6 md:bottom-10 md:left-10 z-[200] pb-[env(safe-area-inset-bottom,0px)] pl-[env(safe-area-inset-left,0px)]">
+      {/* Hidden audio element loading from weddingConfig */}
       <audio ref={audioRef} src={audioUrl} loop preload="auto" />
 
       {/* Floating circular control button */}
@@ -50,7 +51,7 @@ export const MusicPlayer: React.FC = () => {
         transition={{ delay: 1.0 }}
         onClick={togglePlay}
         aria-label={isPlaying ? "Mute background music" : "Play background music"}
-        className="w-11 h-11 rounded-full flex items-center justify-center bg-bg-light/80 backdrop-blur-md border border-primary/20 hover:border-primary shadow-soft text-text-primary transition-all duration-300 select-none cursor-pointer focus-visible:outline focus-visible:outline-2 focus-visible:outline-primary"
+        className="w-12 h-12 min-h-[48px] min-w-[48px] touch-manipulation rounded-full flex items-center justify-center bg-bg-light/80 backdrop-blur-md border border-primary/20 hover:border-primary shadow-soft text-text-primary transition-all duration-300 select-none cursor-pointer focus-visible:outline focus-visible:outline-2 focus-visible:outline-primary"
       >
         {isPlaying ? (
           /* Active Equalizer Lines in center of circle */
