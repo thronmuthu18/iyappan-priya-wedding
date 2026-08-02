@@ -292,7 +292,7 @@ export const weddingConfig: WeddingConfig = {
     designCredit: 'Designed for a lifetime of love.',
   },
   music: {
-    backgroundTrack: '/assets/music/temple_bell.mp3',
+    backgroundTrack: '/audio/wedding-theme.mp3',
   },
   introduction: {
     blessing: { en: 'With the blessings of Lord Ganesha', ta: 'விநாயகப் பெருமான் துணையுடன்' },
