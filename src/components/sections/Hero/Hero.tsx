@@ -277,14 +277,16 @@ export const Hero: React.FC = () => {
           style={{
             fontSize: 'clamp(52px, 12vw, 116px)',
             lineHeight: 1.1,
-            background: 'linear-gradient(135deg, #A07850 0%, #C9A96E 30%, #F1E7D0 55%, #C9A96E 75%, #A07850 100%)',
-            WebkitBackgroundClip: 'text',
-            WebkitTextFillColor: 'transparent',
-            backgroundClip: 'text',
             filter: 'drop-shadow(0 4px 20px rgba(201,169,110,0.35))',
           }}
         >
-          {couple.groom[language]} ❤️ {couple.bride[language]}
+          <span style={{ color: '#0B1F4D', textShadow: '0 2px 10px rgba(255,255,255,0.9), 0 0 1px rgba(201,169,110,0.9)' }}>
+            {couple.groom[language]}
+          </span>
+          <span className="mx-2" style={{ textShadow: 'none' }}>❤️</span>
+          <span style={{ color: '#0B1F4D', textShadow: '0 2px 10px rgba(255,255,255,0.9), 0 0 1px rgba(201,169,110,0.9)' }}>
+            {couple.bride[language]}
+          </span>
         </motion.h1>
 
         {/* Dynamic language name transliteration under main title if needed */}
