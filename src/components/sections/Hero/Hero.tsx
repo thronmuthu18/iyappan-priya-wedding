@@ -188,11 +188,11 @@ export const Hero: React.FC = () => {
         <span className="font-body text-[10px] tracking-[0.2em] text-text-inverse/60 uppercase">
           Scroll
         </span>
-        <div className="w-[1px] h-12 bg-border/20 relative overflow-hidden">
+        <div className="w-[1px] h-12 bg-white/20 relative">
           <motion.div
-            animate={{ y: ["-100%", "100%"] }}
+            animate={{ y: [0, 42], opacity: [0, 1, 0] }}
             transition={{ duration: 2.0, repeat: Infinity, ease: "easeInOut" }}
-            className="absolute top-0 left-0 right-0 h-4 bg-primary"
+            className="absolute -left-[2.5px] -top-[3px] w-1.5 h-1.5 rounded-full bg-primary"
           />
         </div>
       </motion.div>
