@@ -1,4 +1,4 @@
-import { Loader, Hero, Couple, Story, Timeline, Gallery, Events, Countdown, Family } from '@/components/sections'
+import { Loader, Hero, Couple, Story, Timeline, Gallery, Events, Countdown, Family, Venue } from '@/components/sections'
 import { Navbar } from '@/components/navigation'
 
 function App() {
@@ -30,9 +30,11 @@ function App() {
 
       {/* Loved family and wedding party list */}
       <Family />
+
+      {/* Venue logistics and map section */}
+      <Venue />
       
       {/* Scrollspy test sections */}
-      <div id="venue" className="h-screen bg-white flex items-center justify-center border-b border-border text-text-primary font-display text-3xl">Venue Section</div>
       <div id="rsvp" className="h-screen bg-bg-light flex items-center justify-center text-text-primary font-display text-3xl">RSVP Section</div>
     </>
   )
