@@ -1,1 +1,1 @@
-// Barrel export for src/components/sections
+export { Loader } from './Loader'

@@ -1,1 +1,2 @@
-// Barrel export for src/store
+export { useUIStore } from './ui.store'
+export type { UIState } from './ui.store'
