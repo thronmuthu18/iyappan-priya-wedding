@@ -19,7 +19,7 @@ export function useScroll() {
     handleScroll()
 
     // Setup IntersectionObserver for sections
-    const sections = ['hero', 'couple', 'story', 'timeline', 'events', 'gallery', 'family', 'venue', 'rsvp']
+    const sections = ['hero', 'couple', 'story', 'timeline', 'events', 'family', 'venue', 'rsvp']
     const observers = sections.map((id) => {
       const el = document.getElementById(id)
       if (!el) return null

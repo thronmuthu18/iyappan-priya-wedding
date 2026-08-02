@@ -12,7 +12,6 @@ const Story = lazy(() => import('@/components/sections/Story').then(m => ({ defa
 const Timeline = lazy(() => import('@/components/sections/Timeline').then(m => ({ default: m.Timeline })))
 const Events = lazy(() => import('@/components/sections/Events').then(m => ({ default: m.Events })))
 const Countdown = lazy(() => import('@/components/sections/Countdown').then(m => ({ default: m.Countdown })))
-const Gallery = lazy(() => import('@/components/sections/Gallery').then(m => ({ default: m.Gallery })))
 const Family = lazy(() => import('@/components/sections/Family').then(m => ({ default: m.Family })))
 const Venue = lazy(() => import('@/components/sections/Venue').then(m => ({ default: m.Venue })))
 const RSVP = lazy(() => import('@/components/sections/RSVP').then(m => ({ default: m.RSVP })))
@@ -76,10 +75,6 @@ function App() {
         <Countdown />
       </Suspense>
 
-      {/* Modern Asymmetrical Photo Gallery */}
-      <Suspense fallback={<SectionPlaceholder />}>
-        <Gallery />
-      </Suspense>
 
       {/* Parents Section */}
       <Suspense fallback={<SectionPlaceholder />}>

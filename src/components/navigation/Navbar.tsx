@@ -18,7 +18,6 @@ export const Navbar: React.FC = () => {
   ]
 
   const rightLinks = [
-    { id: 'gallery', label: { en: 'Gallery', ta: 'புகைப்படங்கள்' } },
     { id: 'family', label: { en: 'Family', ta: 'குடும்பம்' } },
     { id: 'rsvp', label: { en: 'RSVP', ta: 'பதிவு' } },
   ]

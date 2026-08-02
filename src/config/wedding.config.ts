@@ -28,13 +28,7 @@ export interface StoryChapter {
   alt: { en: string; ta: string }
 }
 
-export interface GalleryItem {
-  id: number
-  imageKey: string
-  alt: string
-  caption: { en: string; ta: string }
-  category: string
-}
+
 
 export interface FamilyGroup {
   side: 'bride' | 'groom'
@@ -105,12 +99,7 @@ export interface WeddingConfig {
     sectionSubtitle: { en: string; ta: string }
     chapters: StoryChapter[]
   }
-  gallery: {
-    sectionTitle: { en: string; ta: string }
-    sectionSubtitle: { en: string; ta: string }
-    categories: string[]
-    items: GalleryItem[]
-  }
+
   family: {
     sectionTitle: { en: string; ta: string }
     sectionSubtitle: { en: string; ta: string }
@@ -238,26 +227,7 @@ export const weddingConfig: WeddingConfig = {
       },
     ],
   },
-  gallery: {
-    sectionTitle: { en: 'Captured Moments', ta: 'நினைவுப் படங்கள்' },
-    sectionSubtitle: { en: 'VISUAL JOURNAL', ta: 'புகைப்படத் தொகுப்பு' },
-    categories: [
-      'Bride Photos',
-      'Groom Photos',
-      'Temple Photos',
-      'Engagement Photos',
-      'Family Photos',
-      'Wedding Photos',
-    ],
-    items: [
-      { id: 0, imageKey: 'gallery_1', alt: 'Engagement Ceremony', caption: { en: 'Engagement Ceremony', ta: 'நிச்சயதார்த்த விழா' }, category: 'Engagement Photos' },
-      { id: 1, imageKey: 'gallery_2', alt: 'Priya Portrait', caption: { en: 'Graceful Priya', ta: 'மணப்பெண் பிரியா' }, category: 'Bride Photos' },
-      { id: 2, imageKey: 'gallery_3', alt: 'Iyappan Portrait', caption: { en: 'Handsome Iyappan', ta: 'மணமகன் இயப்பன்' }, category: 'Groom Photos' },
-      { id: 3, imageKey: 'gallery_4', alt: 'Murugan Temple', caption: { en: 'Murugan Temple', ta: 'முருகன் கோவில்' }, category: 'Temple Photos' },
-      { id: 4, imageKey: 'gallery_5', alt: 'Family Portrait', caption: { en: 'Loving Families', ta: 'அன்புக் குடும்பங்கள்' }, category: 'Family Photos' },
-      { id: 5, imageKey: 'gallery_6', alt: 'Wedding Rituals', caption: { en: 'Sacred Rituals', ta: 'திருமண சடங்குகள்' }, category: 'Wedding Photos' },
-    ],
-  },
+
   family: {
     sectionTitle: { en: 'Family Members', ta: 'குடும்ப உறவுகள்' },
     sectionSubtitle: { en: 'THE FAMILIES', ta: 'உறவுகள்' },

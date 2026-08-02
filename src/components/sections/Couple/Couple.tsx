@@ -4,8 +4,8 @@ import { Section, Container } from '@/components/layout'
 import { LazyImage, GoldLine } from '@/components/shared'
 import { weddingConfig } from '@/config/wedding.config'
 import { useUIStore } from '@/store'
-import brideImg from '@/assets/bride_portrait.jpg'
-import groomImg from '@/assets/groom_portrait.jpg'
+import brideImg from '@/assets/bride_portrait.png'
+import groomImg from '@/assets/groom_portrait.png'
 
 // ── Portrait Frame ───────────────────────────────────────────────
 const PortraitFrame: React.FC<{ src: string; alt: string }> = ({ src, alt }) => (
