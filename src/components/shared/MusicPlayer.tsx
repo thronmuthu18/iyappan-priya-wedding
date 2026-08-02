@@ -102,7 +102,16 @@ export const MusicPlayer: React.FC = () => {
   useEffect(() => {
     if (!showPopup) return
 
+    let activated = false
+
     const handleTapAnywhere = () => {
+      if (activated) return
+      activated = true
+
+      // Clean up listeners immediately to prevent double-firing (touchstart + click)
+      window.removeEventListener('click', handleTapAnywhere)
+      window.removeEventListener('touchstart', handleTapAnywhere)
+
       const audio = audioRef.current
       if (audio) {
         setShowPopup(false)
@@ -190,7 +199,6 @@ export const MusicPlayer: React.FC = () => {
               exit={{ scale: 0.9, y: 20 }}
               transition={{ type: 'spring', damping: 25, stiffness: 180 }}
               className="bg-bg-light/95 backdrop-blur-lg p-8 sm:p-10 rounded-sm border border-primary/30 shadow-luxury text-center max-w-[340px] mx-4 flex flex-col items-center space-y-6 relative"
-              onClick={(e) => e.stopPropagation()} // Prevent bubble to window tap trigger unless clicking background
             >
               {/* Gold corner ornaments */}
               {['top-2 left-2', 'top-2 right-2 rotate-90', 'bottom-2 right-2 rotate-180', 'bottom-2 left-2 -rotate-90'].map((pos, i) => (
@@ -224,13 +232,6 @@ export const MusicPlayer: React.FC = () => {
               <motion.button
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
-                onClick={() => {
-                  const audio = audioRef.current
-                  if (audio) {
-                    setShowPopup(false)
-                    fadeInAudio(audio)
-                  }
-                }}
                 className="w-full py-3 bg-primary text-bg-light hover:bg-primary/95 font-display text-xs tracking-[0.2em] uppercase rounded-none transition-all duration-300 shadow-soft cursor-pointer"
               >
                 {language === 'ta' ? 'தொடங்கவும்' : 'Begin Experience'}
