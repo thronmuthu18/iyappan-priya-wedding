@@ -4,7 +4,7 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Section, Container } from '@/components/layout'
 import { Button } from '@/components/ui'
-import { GoldLine } from '@/components/shared'
+import { GoldLine, AtmosphericBackground } from '@/components/shared'
 import { rsvpSchema, type RSVPFormData } from './rsvp.schema'
 import { submitRSVP } from '@/services'
 import { useUIStore } from '@/store'
@@ -43,6 +43,7 @@ const inputStyle = {
 
 export const RSVP: React.FC = () => {
   const { language } = useUIStore()
+  const sectionRef = React.useRef<HTMLElement>(null)
   const [step,        setStep]        = useState<1 | 2 | 3>(1)
   const [isSubmitting,setIsSubmitting] = useState(false)
 
@@ -89,10 +90,12 @@ export const RSVP: React.FC = () => {
 
   return (
     <Section
+      ref={sectionRef}
       id="rsvp"
       className="py-20 md:py-36 relative overflow-hidden"
-      style={{ background: 'linear-gradient(160deg, #FAF7F2 0%, #F5E6E0 100%)', borderTop: '1px solid rgba(201,169,110,0.1)' }}
+      style={{ background: 'transparent' }}
     >
+      <AtmosphericBackground type="rsvp" targetRef={sectionRef} />
       {/* Background marigold pattern */}
       <div className="absolute inset-0 pointer-events-none opacity-[0.03]">
         {Array.from({ length: 12 }).map((_, i) => (
@@ -100,7 +103,7 @@ export const RSVP: React.FC = () => {
         ))}
       </div>
 
-      <Container size="reading">
+      <Container size="reading" className="relative z-20">
         {/* Header */}
         <div className="text-center mb-12 md:mb-16 relative z-10">
           <p className="font-tamil text-primary/60 text-sm mb-2">

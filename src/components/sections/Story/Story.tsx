@@ -1,7 +1,7 @@
-import React from 'react'
+import React, { useRef } from 'react'
 import { motion } from 'framer-motion'
 import { Section, Container } from '@/components/layout'
-import { LazyImage, GoldLine } from '@/components/shared'
+import { LazyImage, GoldLine, AtmosphericBackground } from '@/components/shared'
 import { useUIStore } from '@/store'
 import { weddingConfig } from '@/config/wedding.config'
 import ch1Img from '@/assets/story_chapter_1.jpg'
@@ -16,6 +16,7 @@ const imageMap: Record<string, string> = {
 
 export const Story: React.FC = () => {
   const { language } = useUIStore()
+  const sectionRef = useRef<HTMLElement>(null)
 
   const revealVariants = {
     hidden:  (isEven: boolean) => ({ opacity: 0, x: isEven ? -40 : 40 }),
@@ -30,8 +31,9 @@ export const Story: React.FC = () => {
   const storyData = weddingConfig.story
 
   return (
-    <Section id="story" className="py-20 md:py-36" style={{ background: '#FAF7F2' }}>
-      <Container size="standard">
+    <Section ref={sectionRef} id="story" className="py-20 md:py-36 relative overflow-hidden" style={{ background: 'transparent' }}>
+      <AtmosphericBackground type="story" targetRef={sectionRef} />
+      <Container size="standard" className="relative z-20">
         {/* Header */}
         <div className="text-center mb-20 md:mb-32">
           <p className="font-tamil text-primary/60 text-sm mb-2">{storyData.sectionTitle[language]}</p>

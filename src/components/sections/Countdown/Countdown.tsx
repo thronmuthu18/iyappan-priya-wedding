@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Section, Container } from '@/components/layout'
-import { GoldLine } from '@/components/shared'
+import { GoldLine, AtmosphericBackground } from '@/components/shared'
 import { useUIStore } from '@/store'
 import { weddingConfig } from '@/config/wedding.config'
 
@@ -116,6 +116,7 @@ const LampRow: React.FC = () => (
 export const Countdown: React.FC = () => {
   const { language } = useUIStore()
   const [timeLeft, setTimeLeft] = useState<TimeLeft>(calculateTimeLeft())
+  const sectionRef = useRef<HTMLElement>(null)
 
   useEffect(() => {
     const timer = setInterval(() => setTimeLeft(calculateTimeLeft()), 1000)
@@ -134,10 +135,12 @@ export const Countdown: React.FC = () => {
 
   return (
     <Section
+      ref={sectionRef}
       id="countdown"
       className="py-20 md:py-32 relative overflow-hidden"
-      style={{ background: 'linear-gradient(160deg, #060F1E 0%, #0A1D37 60%, #1A0A00 100%)' }}
+      style={{ background: 'transparent' }}
     >
+      <AtmosphericBackground type="countdown" targetRef={sectionRef} />
       {/* Background pattern */}
       <div className="absolute inset-0 pointer-events-none opacity-[0.04]">
         {Array.from({ length: 16 }).map((_, i) => (
@@ -171,7 +174,7 @@ export const Countdown: React.FC = () => {
           <p className="font-tamil text-primary/60 text-sm mb-2">
             {language === 'ta' ? 'திருமணம் வரை' : 'The Wedding Countdown'}
           </p>
-          <span className="font-body text-[10px] tracking-[0.25em] text-text-inverse/40 uppercase block mb-2">
+          <span className="font-body text-[10px] tracking-[0.25em] text-text-secondary/70 uppercase block mb-2">
             {language === 'ta' ? 'மங்களத் திருநாள்' : 'THE SACRED COUNTDOWN'}
           </span>
           <h2 className="font-display font-light mb-4" style={{ fontSize: 'clamp(28px, 6vw, 48px)', color: '#C9A96E' }}>

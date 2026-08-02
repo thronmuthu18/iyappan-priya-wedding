@@ -1,7 +1,7 @@
-import React from 'react'
+import React, { useRef } from 'react'
 import { motion } from 'framer-motion'
 import { Section, Container } from '@/components/layout'
-import { GoldLine } from '@/components/shared'
+import { GoldLine, AtmosphericBackground } from '@/components/shared'
 import { weddingConfig } from '@/config/wedding.config'
 import { useUIStore } from '@/store'
 
@@ -116,10 +116,12 @@ const FamilySide: React.FC<{
 export const Family: React.FC = () => {
   const { language } = useUIStore()
   const { family } = weddingConfig
+  const sectionRef = useRef<HTMLElement>(null)
 
   return (
-    <Section id="family" className="py-20 md:py-36" style={{ background: '#FAF7F2' }}>
-      <Container size="standard">
+    <Section ref={sectionRef} id="family" className="py-20 md:py-36 relative overflow-hidden" style={{ background: 'transparent' }}>
+      <AtmosphericBackground type="family" targetRef={sectionRef} />
+      <Container size="standard" className="relative z-20">
         {/* Header */}
         <div className="text-center mb-20 md:mb-28">
           <p className="font-tamil text-primary/60 text-sm mb-2">

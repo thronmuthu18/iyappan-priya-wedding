@@ -1,7 +1,7 @@
-import React from 'react'
+import React, { useRef } from 'react'
 import { motion } from 'framer-motion'
 import { Section, Container } from '@/components/layout'
-import { LazyImage, GoldLine } from '@/components/shared'
+import { LazyImage, GoldLine, AtmosphericBackground } from '@/components/shared'
 import { weddingConfig } from '@/config/wedding.config'
 import { useUIStore } from '@/store'
 import brideImg from '@/assets/bride_portrait.png'
@@ -9,7 +9,7 @@ import groomImg from '@/assets/groom_portrait.png'
 
 // ── Portrait Frame ───────────────────────────────────────────────
 const PortraitFrame: React.FC<{ src: string; alt: string }> = ({ src, alt }) => (
-  <div className="relative w-full max-w-[300px] aspect-[3/4] mb-8 group">
+  <div className="relative w-full max-w-[300px] aspect-[3/4] mb-8 group z-10">
     {/* Outer gold border */}
     <div
       className="absolute inset-0 transition-transform duration-500 group-hover:scale-[1.02]"
@@ -55,6 +55,7 @@ const JasmineDivider: React.FC = () => (
 // ── Main Couple Section ──────────────────────────────────────────
 export const Couple: React.FC = () => {
   const { language } = useUIStore()
+  const sectionRef = useRef<HTMLElement>(null)
 
   const cardVariants = {
     hidden:  { opacity: 0, y: 40 },
@@ -81,8 +82,9 @@ export const Couple: React.FC = () => {
   }
 
   return (
-    <Section id="couple" className="py-20 md:py-36" style={{ background: '#FAF7F2' }}>
-      <Container size="standard">
+    <Section ref={sectionRef} id="couple" className="py-20 md:py-36 relative overflow-hidden" style={{ background: 'transparent' }}>
+      <AtmosphericBackground type="couple" targetRef={sectionRef} />
+      <Container size="standard" className="relative z-20">
         {/* Section Header */}
         <div className="text-center mb-16 md:mb-24">
           {/* Tamil/English labels */}

@@ -1,7 +1,7 @@
 import React from 'react'
 import { motion } from 'framer-motion'
 import { Section, Container } from '@/components/layout'
-import { GoldLine } from '@/components/shared'
+import { GoldLine, AtmosphericBackground } from '@/components/shared'
 import { Navigation, MapPin } from 'lucide-react'
 import { useUIStore } from '@/store'
 import { weddingConfig } from '@/config/wedding.config'
@@ -102,6 +102,7 @@ const VenueCard: React.FC<VenueCardProps> = ({ title, venue, language }) => {
 
 export const Venue: React.FC = () => {
   const { language } = useUIStore()
+  const sectionRef = React.useRef<HTMLElement>(null)
 
   const labels = {
     sectionTitle: { en: 'Venues & Navigation', ta: 'திருமண இடங்கள்' },
@@ -112,8 +113,9 @@ export const Venue: React.FC = () => {
   }
 
   return (
-    <Section id="venue" className="py-20 md:py-36" style={{ background: '#FAF7F2', borderTop: '1px solid rgba(201,169,110,0.1)' }}>
-      <Container size="standard">
+    <Section ref={sectionRef} id="venue" className="py-20 md:py-36 relative overflow-hidden" style={{ background: 'transparent' }}>
+      <AtmosphericBackground type="venue" targetRef={sectionRef} />
+      <Container size="standard" className="relative z-20">
         {/* Header */}
         <div className="text-center mb-20 md:mb-28">
           <p className="font-tamil text-primary/60 text-sm mb-2">{labels.sectionSubtitle[language]}</p>

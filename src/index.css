@@ -180,6 +180,59 @@
   will-change: transform;
 }
 
+@keyframes mist-drift-1 {
+  0% { transform: translate(0px, 0px) scale(1); opacity: 0.15; }
+  50% { transform: translate(60px, 40px) scale(1.15); opacity: 0.35; }
+  100% { transform: translate(0px, 0px) scale(1); opacity: 0.15; }
+}
+
+@keyframes mist-drift-2 {
+  0% { transform: translate(0px, 0px) scale(1.2); opacity: 0.12; }
+  50% { transform: translate(-50px, 60px) scale(0.95); opacity: 0.3; }
+  100% { transform: translate(0px, 0px) scale(1.2); opacity: 0.12; }
+}
+
+@keyframes particle-float-slow {
+  0% { transform: translate3d(0px, 100px, 0px); opacity: 0; }
+  10% { opacity: 0.6; }
+  90% { opacity: 0.6; }
+  100% { transform: translate3d(40px, -400px, 30px); opacity: 0; }
+}
+
+@keyframes god-ray-shimmer {
+  0%, 100% { opacity: 0.04; transform: scale(1) rotate(-15deg); }
+  50% { opacity: 0.12; transform: scale(1.04) rotate(-13deg); }
+}
+
+@keyframes cloud-drift {
+  0% { transform: translate3d(-80px, 0px, -20px); opacity: 0.15; }
+  50% { transform: translate3d(80px, -10px, 10px); opacity: 0.3; }
+  100% { transform: translate3d(-80px, 0px, -20px); opacity: 0.15; }
+}
+
+@keyframes jasmine-fall {
+  0% { transform: translate3d(0px, -40px, 0px) rotate3d(1, 1, 0.5, 0deg); opacity: 0; }
+  10% { opacity: 0.75; }
+  90% { opacity: 0.75; }
+  100% { transform: translate3d(60px, 500px, 40px) rotate3d(1, 1, 0.5, 360deg); opacity: 0; }
+}
+
+.perspective-container {
+  perspective: 1200px;
+  transform-style: preserve-3d;
+}
+
+.camera-breathing-layer {
+  transform-style: preserve-3d;
+  animation: camera-breathing 20s ease-in-out infinite;
+  will-change: transform;
+}
+
+@keyframes camera-breathing {
+  0%, 100% { transform: rotate3d(1, 1, 0, -0.6deg) translate3d(-2px, -1px, 0px); }
+  50% { transform: rotate3d(1, 1, 0, 0.6deg) translate3d(2px, 1px, 0px); }
+}
+
 @media (prefers-reduced-motion: reduce) {
   *, ::before, ::after {
     animation-duration: 0.01ms !important;

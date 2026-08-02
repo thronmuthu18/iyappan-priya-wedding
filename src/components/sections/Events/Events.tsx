@@ -1,8 +1,8 @@
-import React from 'react'
+import React, { useRef } from 'react'
 import { motion } from 'framer-motion'
 import { Section, Container } from '@/components/layout'
 import { Button } from '@/components/ui'
-import { GoldLine } from '@/components/shared'
+import { GoldLine, AtmosphericBackground } from '@/components/shared'
 import { MapPin, Clock, Calendar } from 'lucide-react'
 import { useUIStore } from '@/store'
 import { weddingConfig } from '@/config/wedding.config'
@@ -28,30 +28,30 @@ const handleDownloadICS = (event: any, lang: 'ta' | 'en') => {
 
   // Format date to ICS timestamp format
   const dateParts = event.date.split('-')
-  const yyyymmdd = dateParts.join('')
-  const dtStart = `${yyyymmdd}T100000`
-  const dtEnd = `${yyyymmdd}T130000`
+  const year = dateParts[0]
+  const month = dateParts[1]
+  const day = dateParts[2]
 
-  const icsString = [
-    'BEGIN:VCALENDAR',
-    'VERSION:2.0',
-    'PRODID:-//Iyappan and Priya Wedding//EN',
-    'BEGIN:VEVENT',
-    `UID:${event.id}@iyappan-priya-2026.in`,
-    `DTSTAMP:20260802T100000Z`,
-    `DTSTART:${dtStart}`,
-    `DTEND:${dtEnd}`,
-    `SUMMARY:${summaryStr}`,
-    `DESCRIPTION:${descStr}`,
-    `LOCATION:${locationStr}`,
-    'END:VEVENT',
-    'END:VCALENDAR',
-  ].join('\r\n')
+  const startTimeStr = `${year}${month}${day}T100000`
+  const endTimeStr = `${year}${month}${day}T140000`
 
-  const blob = new Blob([icsString], { type: 'text/calendar;charset=utf-8' })
+  const icsContent = 
+    `BEGIN:VCALENDAR\n` +
+    `VERSION:2.0\n` +
+    `BEGIN:VEVENT\n` +
+    `SUMMARY:${summaryStr}\n` +
+    `DESCRIPTION:${descStr}\n` +
+    `LOCATION:${locationStr}\n` +
+    `DTSTART:${startTimeStr}\n` +
+    `DTEND:${endTimeStr}\n` +
+    `END:VEVENT\n` +
+    `END:VCALENDAR`;
+
+  const blob = new Blob([icsContent], { type: 'text/calendar;charset=utf-8' })
+  const url = URL.createObjectURL(blob)
   const link = document.createElement('a')
-  link.href = URL.createObjectURL(blob)
-  link.download = `${event.id}_iyappan_priya.ics`
+  link.href = url
+  link.setAttribute('download', `${event.id}_event.ics`)
   document.body.appendChild(link)
   link.click()
   document.body.removeChild(link)
@@ -59,6 +59,7 @@ const handleDownloadICS = (event: any, lang: 'ta' | 'en') => {
 
 export const Events: React.FC = () => {
   const { language } = useUIStore()
+  const sectionRef = useRef<HTMLElement>(null)
   const events = weddingConfig.events
 
   // Localized general texts
@@ -94,8 +95,9 @@ export const Events: React.FC = () => {
   }
 
   return (
-    <Section id="events" className="py-20 md:py-36" style={{ background: '#FAF7F2' }}>
-      <Container size="standard">
+    <Section ref={sectionRef} id="events" className="py-20 md:py-36 relative overflow-hidden" style={{ background: 'transparent' }}>
+      <AtmosphericBackground type="events" targetRef={sectionRef} />
+      <Container size="standard" className="relative z-20">
         {/* Header */}
         <div className="text-center mb-20 md:mb-28">
           <p className="font-tamil text-primary/60 text-sm mb-2">{labels.sectionSubtitle[language]}</p>

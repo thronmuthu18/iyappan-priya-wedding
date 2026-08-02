@@ -1,13 +1,14 @@
 import React, { useRef } from 'react'
 import { motion, useScroll, useTransform } from 'framer-motion'
 import { Section, Container } from '@/components/layout'
-import { GoldLine } from '@/components/shared'
+import { GoldLine, AtmosphericBackground } from '@/components/shared'
 import { useUIStore } from '@/store'
 import { weddingConfig } from '@/config/wedding.config'
 
 export const Timeline: React.FC = () => {
   const { language } = useUIStore()
   const containerRef = useRef<HTMLDivElement>(null)
+  const sectionRef = useRef<HTMLElement>(null)
 
   const { scrollYProgress } = useScroll({
     target: containerRef,
@@ -20,8 +21,9 @@ export const Timeline: React.FC = () => {
   const emojis = ['💍', '🌿', '🪔'] // Emojis corresponding to the 3 timeline phases
 
   return (
-    <Section id="timeline" className="bg-[#FAF7F2] py-20 md:py-36">
-      <Container size="standard">
+    <Section ref={sectionRef} id="timeline" className="py-20 md:py-36 relative overflow-hidden" style={{ background: 'transparent' }}>
+      <AtmosphericBackground type="timeline" targetRef={sectionRef} />
+      <Container size="standard" className="relative z-20">
         {/* Header */}
         <div className="text-center mb-20 md:mb-32">
           <p className="font-tamil text-primary/60 text-sm mb-2">
