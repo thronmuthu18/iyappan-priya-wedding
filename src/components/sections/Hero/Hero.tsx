@@ -194,7 +194,7 @@ export const Hero: React.FC = () => {
         {/* Wedding Names */}
         <motion.h1
           variants={namesVariants}
-          className="font-script text-[64px] md:text-[112px] text-primary mb-6 filter drop-shadow-[0_4px_12px_rgba(201,169,110,0.15)]"
+          className="font-script text-[52px] sm:text-[72px] md:text-[96px] lg:text-[112px] text-primary mb-6 filter drop-shadow-[0_4px_12px_rgba(201,169,110,0.15)]"
         >
           Aria & Julian
         </motion.h1>
