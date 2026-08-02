@@ -1,4 +1,4 @@
-import { Loader, Hero, Couple } from '@/components/sections'
+import { Loader, Hero, Couple, Story } from '@/components/sections'
 import { Navbar } from '@/components/navigation'
 
 function App() {
@@ -12,9 +12,11 @@ function App() {
 
       {/* Symmetrical Couple profiles section */}
       <Couple />
+
+      {/* Alternating Narrative Story chapters */}
+      <Story />
       
       {/* Scrollspy test sections */}
-      <div id="story" className="h-screen bg-white flex items-center justify-center border-b border-border text-text-primary font-display text-3xl">Our Story Section</div>
       <div id="timeline" className="h-screen bg-bg-light flex items-center justify-center border-b border-border text-text-primary font-display text-3xl">Timeline Section</div>
       <div id="events" className="h-screen bg-white flex items-center justify-center border-b border-border text-text-primary font-display text-3xl">Events Section</div>
       <div id="gallery" className="h-screen bg-bg-light flex items-center justify-center border-b border-border text-text-primary font-display text-3xl">Gallery Section</div>
