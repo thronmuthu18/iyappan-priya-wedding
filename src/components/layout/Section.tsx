@@ -15,7 +15,7 @@ export const Section = React.forwardRef<HTMLElement, SectionProps>(
         initial={animate ? { opacity: 0, y: 32 } : {}}
         whileInView={animate ? { opacity: 1, y: 0 } : {}}
         viewport={{ once: true, margin: "-100px" }}
-        transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+        transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] as const }}
         className={cn(
           "py-16 md:py-28 lg:py-40 relative overflow-hidden",
           className

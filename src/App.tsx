@@ -1,4 +1,4 @@
-import { Loader } from '@/components/sections'
+import { Loader, Hero } from '@/components/sections'
 import { Navbar } from '@/components/navigation'
 
 function App() {
@@ -7,13 +7,8 @@ function App() {
       <Loader />
       <Navbar />
       
-      {/* Main welcome banner acting as Hero scroll offset */}
-      <div id="hero" className="min-h-screen bg-bg-dark text-text-inverse flex items-center justify-center">
-        <div className="text-center">
-          <h1 className="font-display text-5xl mb-4 text-primary">Aria & Julian</h1>
-          <p className="font-body text-xs tracking-widest text-text-secondary uppercase">Scroll Down to Enter the Celebration</p>
-        </div>
-      </div>
+      {/* Cinematic Hero entry section */}
+      <Hero />
       
       {/* Scrollspy test sections */}
       <div id="story" className="h-screen bg-white flex items-center justify-center border-b border-border text-text-primary font-display text-3xl">Our Story Section</div>

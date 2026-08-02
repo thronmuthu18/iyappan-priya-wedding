@@ -1,0 +1,158 @@
+import React from 'react'
+import { motion, useScroll, useTransform } from 'framer-motion'
+import { Button } from '@/components/ui'
+import heroImg from '@/assets/hero_couple_tuscany.jpg'
+
+export const Hero: React.FC = () => {
+  const { scrollY } = useScroll()
+  
+  // Parallax transforms (GPU accelerated)
+  const bgY = useTransform(scrollY, [0, 800], [0, 200])
+  const bgScale = useTransform(scrollY, [0, 800], [1.02, 1.08])
+  const textY = useTransform(scrollY, [0, 800], [0, 100])
+  const textOpacity = useTransform(scrollY, [0, 600], [1, 0])
+
+  const scrollToRSVP = () => {
+    document.getElementById('rsvp')?.scrollIntoView({ behavior: 'smooth' })
+  }
+
+  const scrollToStory = () => {
+    document.getElementById('story')?.scrollIntoView({ behavior: 'smooth' })
+  }
+
+  // Animation variants
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.15,
+        delayChildren: 0.4,
+      },
+    },
+  }
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 24 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 1.0, ease: [0.16, 1, 0.3, 1] as const },
+    },
+  }
+
+  const namesVariants = {
+    hidden: { opacity: 0, scale: 0.95 },
+    visible: {
+      opacity: 1,
+      scale: 1,
+      transition: { duration: 1.6, ease: [0.22, 1, 0.36, 1] as const },
+    },
+  }
+
+  return (
+    <section id="hero" className="relative w-full h-screen overflow-hidden bg-bg-dark flex items-center justify-center">
+      {/* Parallax Background */}
+      <motion.div
+        style={{ y: bgY, scale: bgScale }}
+        className="absolute inset-0 w-full h-full"
+      >
+        <img
+          src={heroImg}
+          alt="Aria and Julian in Tuscany"
+          className="w-full h-full object-cover object-center filter brightness-[0.8]"
+        />
+        {/* Double-layered overlays */}
+        <div className="absolute inset-0 bg-gradient-to-t from-bg-dark via-transparent to-black/30" />
+        <div className="absolute inset-0 bg-black/10" />
+      </motion.div>
+
+      {/* Floating Corner Floral Ornaments */}
+      <div className="absolute inset-0 pointer-events-none z-10 hidden sm:block">
+        {/* Top Left */}
+        <svg viewBox="0 0 100 100" className="absolute top-6 left-6 w-20 h-20 text-primary/15 rotate-[-45deg]">
+          <path d="M10 90 Q30 50 90 10 M30 80 Q15 60 40 40 M60 40 Q80 15 90 10" fill="none" stroke="currentColor" strokeWidth="1" />
+        </svg>
+        {/* Top Right */}
+        <svg viewBox="0 0 100 100" className="absolute top-6 right-6 w-20 h-20 text-primary/15 rotate-[45deg]">
+          <path d="M90 90 Q70 50 10 10 M70 80 Q85 60 60 40 M40 40 Q20 15 10 10" fill="none" stroke="currentColor" strokeWidth="1" />
+        </svg>
+      </div>
+
+      {/* Content Stack */}
+      <motion.div
+        style={{ y: textY, opacity: textOpacity }}
+        variants={containerVariants}
+        initial="hidden"
+        animate="visible"
+        className="relative z-20 text-center text-text-inverse px-6 flex flex-col items-center max-w-[720px] select-none"
+      >
+        {/* Overhead tag */}
+        <motion.span
+          variants={itemVariants}
+          className="font-body text-[10px] sm:text-xs font-semibold tracking-[0.25em] text-primary uppercase mb-3"
+        >
+          THE CELEBRATION OF
+        </motion.span>
+
+        {/* Wedding Names */}
+        <motion.h1
+          variants={namesVariants}
+          className="font-script text-7xl sm:text-8xl md:text-9xl text-primary mb-6 filter drop-shadow-[0_4px_12px_rgba(201,169,110,0.15)]"
+        >
+          Aria & Julian
+        </motion.h1>
+
+        {/* Tagline / Subtitle */}
+        <motion.p
+          variants={itemVariants}
+          className="font-display italic text-lg sm:text-xl md:text-2xl text-accent-light/95 max-w-[480px] mb-8 font-light leading-relaxed"
+        >
+          “In the quiet space where our paths crossed, we found our forever home.”
+        </motion.p>
+
+        {/* Date & Location Badging */}
+        <motion.div
+          variants={itemVariants}
+          className="flex items-center space-x-4 font-body text-xs sm:text-sm tracking-[0.2em] text-text-inverse/90 uppercase mb-12 border-y border-border/10 py-3 px-6"
+        >
+          <span>OCTOBER 24, 2026</span>
+          <span className="text-primary">•</span>
+          <span>FLORENCE, ITALY</span>
+        </motion.div>
+
+        {/* Action Buttons */}
+        <motion.div
+          variants={itemVariants}
+          className="flex flex-col sm:flex-row items-center justify-center gap-4 w-full sm:w-auto"
+        >
+          <Button variant="primary" onClick={scrollToRSVP} className="w-full sm:w-48">
+            RSVP Invitation
+          </Button>
+          <Button variant="outline" onClick={scrollToStory} className="w-full sm:w-48 border-text-inverse text-text-inverse hover:bg-text-inverse hover:text-bg-dark">
+            Discover Our Story
+          </Button>
+        </motion.div>
+      </motion.div>
+
+      {/* Scroll Down Cue */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 0.6 }}
+        transition={{ delay: 1.8, duration: 1.0 }}
+        className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 flex flex-col items-center space-y-2 pointer-events-none"
+      >
+        <span className="font-body text-[10px] tracking-[0.2em] text-text-inverse/60 uppercase">
+          Scroll
+        </span>
+        <div className="w-[1px] h-12 bg-border/20 relative overflow-hidden">
+          <motion.div
+            animate={{ y: ["-100%", "100%"] }}
+            transition={{ duration: 2.0, repeat: Infinity, ease: "easeInOut" }}
+            className="absolute top-0 left-0 right-0 h-4 bg-primary"
+          />
+        </div>
+      </motion.div>
+    </section>
+  )
+}
