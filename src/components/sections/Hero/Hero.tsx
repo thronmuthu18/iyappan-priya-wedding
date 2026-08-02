@@ -79,6 +79,30 @@ export const Hero: React.FC = () => {
         </svg>
       </div>
 
+      {/* Centered Top Monogram at 12% height */}
+      <div className="absolute top-[12%] left-1/2 -translate-x-1/2 pointer-events-none z-20 hidden sm:block">
+        <svg viewBox="0 0 100 100" className="w-12 h-12 text-primary">
+          {/* Intertwined 'A' */}
+          <path
+            d="M 32,75 L 50,25 L 68,75 M 38,55 L 62,55"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="1.5"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          />
+          {/* Intertwined 'J' */}
+          <path
+            d="M 42,32 L 58,32 M 50,32 L 50,72 Q 50,85 36,85"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="1.5"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          />
+        </svg>
+      </div>
+
       {/* Content Stack */}
       <motion.div
         style={{ y: textY, opacity: textOpacity }}
@@ -95,6 +119,14 @@ export const Hero: React.FC = () => {
           THE CELEBRATION OF
         </motion.span>
 
+        {/* Tagline / Subtitle (Above Names) */}
+        <motion.p
+          variants={itemVariants}
+          className="font-display italic text-lg sm:text-xl md:text-2xl text-accent-light/95 max-w-[480px] mb-6 font-light leading-relaxed"
+        >
+          “In the quiet space where our paths crossed, we found our forever home.”
+        </motion.p>
+
         {/* Wedding Names */}
         <motion.h1
           variants={namesVariants}
@@ -102,14 +134,6 @@ export const Hero: React.FC = () => {
         >
           Aria & Julian
         </motion.h1>
-
-        {/* Tagline / Subtitle */}
-        <motion.p
-          variants={itemVariants}
-          className="font-display italic text-lg sm:text-xl md:text-2xl text-accent-light/95 max-w-[480px] mb-8 font-light leading-relaxed"
-        >
-          “In the quiet space where our paths crossed, we found our forever home.”
-        </motion.p>
 
         {/* Date & Location Badging */}
         <motion.div
