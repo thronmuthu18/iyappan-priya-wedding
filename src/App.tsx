@@ -1,4 +1,4 @@
-import { Loader, Hero, Couple, Story, Timeline, Gallery } from '@/components/sections'
+import { Loader, Hero, Couple, Story, Timeline, Gallery, Events } from '@/components/sections'
 import { Navbar } from '@/components/navigation'
 
 function App() {
@@ -21,9 +21,11 @@ function App() {
 
       {/* Modern Asymmetrical Photo Gallery */}
       <Gallery />
+
+      {/* Double Column Event Details */}
+      <Events />
       
       {/* Scrollspy test sections */}
-      <div id="events" className="h-screen bg-white flex items-center justify-center border-b border-border text-text-primary font-display text-3xl">Events Section</div>
       <div id="venue" className="h-screen bg-white flex items-center justify-center border-b border-border text-text-primary font-display text-3xl">Venue Section</div>
       <div id="rsvp" className="h-screen bg-bg-light flex items-center justify-center text-text-primary font-display text-3xl">RSVP Section</div>
     </>
