@@ -1,1 +1,6 @@
-// Barrel export for src/components/shared
+export { GoldLine } from './GoldLine'
+export type { GoldLineProps } from './GoldLine'
+export { OrnamentalDivider } from './OrnamentalDivider'
+export type { OrnamentalDividerProps } from './OrnamentalDivider'
+export { LazyImage } from './LazyImage'
+export type { LazyImageProps } from './LazyImage'

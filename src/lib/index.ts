@@ -1,1 +1,1 @@
-// Barrel export for src/lib
+export { cn } from './cn'

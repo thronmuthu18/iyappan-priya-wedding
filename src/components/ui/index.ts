@@ -1,1 +1,2 @@
-// Barrel export for src/components/ui
+export { Button } from './Button'
+export type { ButtonProps } from './Button'
