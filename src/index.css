@@ -1,1 +1,75 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=DM+Sans:wght@400;500;600&family=Great+Vibes&display=swap');
+
 @import "tailwindcss";
+
+@theme {
+  /* Colors */
+  --color-primary: #C9A96E;
+  --color-primary-dark: #A07850;
+  --color-primary-light: #F1E7D0;
+  --color-secondary: #8A9E82;
+  --color-secondary-dark: #5C7555;
+  --color-accent: #E8C5B0;
+  --color-accent-light: #F5E6E0;
+  --color-bg-light: #FAF7F2;
+  --color-bg-dark: #2D2926;
+  --color-text-primary: #1A1714;
+  --color-text-secondary: #5C5550;
+  --color-text-inverse: #FAF7F2;
+  --color-border: #E2D9D0;
+  --color-border-accent: #C9A96E;
+
+  /* Typography / Fonts */
+  --font-display: "Cormorant Garamond", serif;
+  --font-body: "DM Sans", sans-serif;
+  --font-script: "Great Vibes", cursive;
+
+  /* Border Radii */
+  --radius-button: 4px;
+  --radius-input: 4px;
+  --radius-card: 8px;
+  --radius-modal: 12px;
+
+  /* Shadows */
+  --shadow-soft: 0px 4px 20px 0px rgba(26, 23, 20, 0.03);
+  --shadow-medium: 0px 10px 40px 0px rgba(26, 23, 20, 0.06);
+  --shadow-luxury: 0px 20px 60px -10px rgba(201, 169, 110, 0.12), 0px 8px 30px 0px rgba(26, 23, 20, 0.04);
+  --shadow-glass: 0px 8px 32px 0px rgba(0, 0, 0, 0.08);
+
+  /* Easing curves */
+  --ease-standard: cubic-bezier(0.25, 1, 0.5, 1);
+  --ease-decelerate: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-transition: cubic-bezier(0.76, 0, 0.24, 1);
+  --ease-bounce: cubic-bezier(0.34, 1.56, 0.64, 1);
+
+  /* Z-Index */
+  --z-base: 1;
+  --z-background-ornaments: 10;
+  --z-fixed-navigation: 100;
+  --z-floating-player: 200;
+  --z-modal-overlay: 1000;
+  --z-toast-notification: 2000;
+}
+
+@layer base {
+  body {
+    background-color: var(--color-bg-light);
+    color: var(--color-text-primary);
+    font-family: var(--font-body);
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+}
+
+@utility glass-card {
+  background: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  box-shadow: var(--shadow-glass);
+}
+
+@utility luxury-card {
+  background: linear-gradient(135deg, #FAF7F2 0%, #F5E6E0 100%);
+  border: 1px solid var(--color-primary);
+  box-shadow: var(--shadow-luxury);
+}
