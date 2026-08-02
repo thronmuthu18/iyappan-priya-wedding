@@ -1,4 +1,4 @@
-import { Loader, Hero, Couple, Story, Timeline, Gallery, Events } from '@/components/sections'
+import { Loader, Hero, Couple, Story, Timeline, Gallery, Events, Countdown } from '@/components/sections'
 import { Navbar } from '@/components/navigation'
 
 function App() {
@@ -24,6 +24,9 @@ function App() {
 
       {/* Double Column Event Details */}
       <Events />
+
+      {/* Dynamic Event Timer Countdown */}
+      <Countdown />
       
       {/* Scrollspy test sections */}
       <div id="venue" className="h-screen bg-white flex items-center justify-center border-b border-border text-text-primary font-display text-3xl">Venue Section</div>
