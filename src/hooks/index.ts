@@ -1,1 +1,1 @@
-// Barrel export for src/hooks
+export { useScroll } from './useScroll'
