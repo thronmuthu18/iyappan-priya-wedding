@@ -295,7 +295,7 @@ export const Hero: React.FC = () => {
             variants={itemVariants}
             className="font-tamil text-primary/60 text-sm mb-6"
           >
-            இயப்பன் & பிரியா
+            ஐயப்பன் & பிரியா
           </motion.p>
         )}
 

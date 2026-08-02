@@ -77,7 +77,7 @@ export const Couple: React.FC = () => {
     },
     groom: {
       en: "Steadfast as a temple pillar, gentle as the evening veena — Iyappan carries the strength of his heritage and the tenderness of a devoted heart. His love for Priya is written in every prayer and every breath.",
-      ta: "நம்பிக்கையும் பண்பும் கொண்ட இயப்பன், குடும்பப் பொறுப்புகளை உணர்ந்து இல்லறப் பயணத்தை நன்முறையில் நடத்தவிருக்கிறார்.",
+      ta: "நம்பிக்கையும் பண்பும் கொண்ட ஐயப்பன், குடும்பப் பொறுப்புகளை உணர்ந்து இல்லறப் பயணத்தை நன்முறையில் நடத்தவிருக்கிறார்.",
     },
   }
 

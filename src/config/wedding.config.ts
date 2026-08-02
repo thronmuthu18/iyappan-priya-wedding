@@ -120,7 +120,7 @@ export interface WeddingConfig {
 
 export const weddingConfig: WeddingConfig = {
   couple: {
-    groom: { en: 'Iyappan', ta: 'இயப்பன்' },
+    groom: { en: 'Iyappan', ta: 'ஐயப்பன்' },
     bride: { en: 'Priya', ta: 'பிரியா' },
   },
   parents: {

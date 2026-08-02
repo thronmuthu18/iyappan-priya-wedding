@@ -15,7 +15,7 @@ const eventEmojis: Record<string, string> = {
 
 const handleDownloadICS = (event: any, lang: 'ta' | 'en') => {
   const summaryStr = lang === 'ta'
-    ? `${event.name.ta} — இயப்பன் & பிரியா`
+    ? `${event.name.ta} — ஐயப்பன் & பிரியா`
     : `${event.name.en} — Iyappan & Priya`
 
   const descStr = lang === 'ta'
@@ -194,7 +194,7 @@ export const Events: React.FC = () => {
                   {/* Description */}
                   <p className="font-body text-xs text-text-secondary leading-relaxed text-center">
                     {event.id === 'engagement' && (language === 'ta'
-                      ? "இயப்பன் மற்றும் பிரியாவின் நிச்சயதார்த்த விழா இரு குடும்ப உறவுகளின் முன்னிலையில் நடைபெறுகிறது."
+                      ? "ஐயப்பன் மற்றும் பிரியாவின் நிச்சயதார்த்த விழா இரு குடும்ப உறவுகளின் முன்னிலையில் நடைபெறுகிறது."
                       : "The betrothal ceremony formally announcing the sacred union between Iyappan and Priya.")}
                     {event.id === 'mehendi' && (language === 'ta'
                       ? "வண்ணமயமான மெஹந்தி மற்றும் இசை நிகழ்ச்சி நிறைந்த மாலைப் பொழுது கொண்டாட்டம்."

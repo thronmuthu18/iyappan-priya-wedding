@@ -171,7 +171,7 @@ export const Navbar: React.FC = () => {
             {/* Om symbol */}
             <div className="mb-6 text-primary" style={{ fontSize: 44, filter: 'drop-shadow(0 0 12px rgba(201,169,110,0.8))' }}>ॐ</div>
             {/* Tamil names */}
-            <p className="font-tamil text-primary/60 text-sm mb-4">இயப்பன் & பிரியா</p>
+            <p className="font-tamil text-primary/60 text-sm mb-4">ஐயப்பன் & பிரியா</p>
 
             <nav className="flex flex-col items-center space-y-2">
               {allLinks.map((link, index) => (
