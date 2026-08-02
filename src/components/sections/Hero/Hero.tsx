@@ -157,7 +157,7 @@ export const Hero: React.FC = () => {
         {/* Date & Location Badging */}
         <motion.div
           variants={itemVariants}
-          className="flex items-center space-x-4 font-body text-xs sm:text-sm tracking-[0.2em] text-text-inverse/90 uppercase mb-12 border-y border-border/10 py-3 px-6"
+          className="flex items-center space-x-4 font-body text-xs sm:text-sm tracking-[0.2em] text-text-inverse/90 uppercase border-y border-border/10 py-3 px-6"
         >
           <span>OCTOBER 24, 2026</span>
           <span className="text-primary">•</span>
@@ -167,13 +167,13 @@ export const Hero: React.FC = () => {
         {/* Action Buttons */}
         <motion.div
           variants={itemVariants}
-          className="flex flex-col sm:flex-row items-center justify-center gap-4 w-full sm:w-auto"
+          className="flex flex-col sm:flex-row items-center justify-center gap-4 w-full sm:w-auto mt-16"
         >
           <Button variant="primary" onClick={scrollToRSVP} className="w-full sm:w-48">
-            RSVP Invitation
+            RSVP Now
           </Button>
           <Button variant="outline" onClick={scrollToStory} className="w-full sm:w-48 border-text-inverse text-text-inverse hover:bg-text-inverse hover:text-bg-dark">
-            Discover Our Story
+            Our Story
           </Button>
         </motion.div>
       </motion.div>
