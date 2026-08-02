@@ -1,4 +1,4 @@
-import { Loader, Hero, Couple, Story, Timeline, Gallery, Events, Countdown, Family, Venue, RSVP } from '@/components/sections'
+import { Loader, Hero, Couple, Story, Timeline, Gallery, Events, Countdown, Family, Venue, RSVP, Footer } from '@/components/sections'
 import { Navbar } from '@/components/navigation'
 
 function App() {
@@ -36,6 +36,9 @@ function App() {
 
       {/* Multi-step validation RSVP entry forms */}
       <RSVP />
+
+      {/* Closing brand signature footer */}
+      <Footer />
     </>
   )
 }
