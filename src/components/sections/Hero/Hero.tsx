@@ -62,9 +62,19 @@ export const Hero: React.FC = () => {
           alt="Aria and Julian in Tuscany"
           className="w-full h-full object-cover object-center filter brightness-[0.8]"
         />
-        {/* Double-layered overlays */}
-        <div className="absolute inset-0 bg-gradient-to-t from-bg-dark via-transparent to-black/30" />
-        <div className="absolute inset-0 bg-black/10" />
+        {/* Double-layered overlays as specified in UI Blueprint */}
+        <div
+          className="absolute inset-0 z-10"
+          style={{
+            background: 'linear-gradient(to top, #1A1714 0%, rgba(26, 23, 20, 0) 40%)'
+          }}
+        />
+        <div
+          className="absolute inset-0 z-10"
+          style={{
+            background: 'radial-gradient(circle, transparent 20%, rgba(26, 23, 20, 0.3) 100%)'
+          }}
+        />
       </motion.div>
 
       {/* Floating Corner Floral Ornaments */}
