@@ -1,8 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react'
 import { motion } from 'framer-motion'
 import { useUIStore } from '@/store'
-import { Volume2, VolumeX } from 'lucide-react'
-import { cn } from '@/lib/cn'
+import { VolumeX } from 'lucide-react'
 
 export const MusicPlayer: React.FC = () => {
   const { musicEnabled, setMusicEnabled } = useUIStore()
@@ -40,55 +39,41 @@ export const MusicPlayer: React.FC = () => {
   if (musicEnabled === null) return null
 
   return (
-    <div className="fixed bottom-6 left-6 z-[200]">
+    <div className="fixed bottom-10 left-10 z-[200]">
       {/* Hidden audio element */}
       <audio ref={audioRef} src={audioUrl} loop preload="auto" />
 
-      {/* Floating control button */}
+      {/* Floating circular control button */}
       <motion.button
         initial={{ opacity: 0, scale: 0.8 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ delay: 1.0 }}
         onClick={togglePlay}
         aria-label={isPlaying ? "Mute background music" : "Play background music"}
-        className={cn(
-          "flex items-center space-x-3 bg-bg-light/80 backdrop-blur-md border border-primary/20 hover:border-primary shadow-soft py-2.5 px-4 rounded-full text-text-primary transition-all duration-300 select-none cursor-pointer focus-visible:outline focus-visible:outline-2 focus-visible:outline-primary",
-          isPlaying ? "pr-5" : ""
-        )}
+        className="w-11 h-11 rounded-full flex items-center justify-center bg-bg-light/80 backdrop-blur-md border border-primary/20 hover:border-primary shadow-soft text-text-primary transition-all duration-300 select-none cursor-pointer focus-visible:outline focus-visible:outline-2 focus-visible:outline-primary"
       >
-        {/* Toggle Icon */}
-        <div className="relative w-4 h-4 flex items-center justify-center">
-          {isPlaying ? (
-            <Volume2 size={15} className="text-primary animate-pulse" />
-          ) : (
-            <VolumeX size={15} className="text-text-secondary" />
-          )}
-        </div>
-
-        {/* Text / Status */}
-        <span className="font-sans text-[9px] tracking-[0.15em] uppercase font-semibold text-text-primary">
-          {isPlaying ? "Sound On" : "Sound Off"}
-        </span>
-
-        {/* Dynamic soundwave visualizer (shows only when playing) */}
-        {isPlaying && (
-          <div className="flex items-end space-x-[2px] h-2.5 w-3.5 pl-1">
+        {isPlaying ? (
+          /* Active Equalizer Lines in center of circle */
+          <div className="flex items-end justify-center space-x-[2px] h-3.5 w-5">
             <motion.span
-              animate={{ height: [3, 9, 3] }}
+              animate={{ height: [4, 12, 4] }}
               transition={{ duration: 1.0, repeat: Infinity, ease: "easeInOut" }}
               className="w-[1.5px] bg-primary block"
             />
             <motion.span
-              animate={{ height: [5, 12, 5] }}
+              animate={{ height: [6, 15, 6] }}
               transition={{ duration: 1.2, repeat: Infinity, ease: "easeInOut", delay: 0.15 }}
               className="w-[1.5px] bg-primary block"
             />
             <motion.span
-              animate={{ height: [3, 8, 3] }}
+              animate={{ height: [4, 10, 4] }}
               transition={{ duration: 0.8, repeat: Infinity, ease: "easeInOut", delay: 0.3 }}
               className="w-[1.5px] bg-primary block"
             />
           </div>
+        ) : (
+          /* Muted VolumeX indicator */
+          <VolumeX size={15} className="text-text-secondary" />
         )}
       </motion.button>
     </div>
