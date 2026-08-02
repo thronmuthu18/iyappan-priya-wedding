@@ -50,6 +50,7 @@ export const MusicPlayer: React.FC = () => {
         animate={{ opacity: 1, scale: 1 }}
         transition={{ delay: 1.0 }}
         onClick={togglePlay}
+        aria-label={isPlaying ? "Mute background music" : "Play background music"}
         className={cn(
           "flex items-center space-x-3 bg-bg-light/80 backdrop-blur-md border border-primary/20 hover:border-primary shadow-soft py-2.5 px-4 rounded-full text-text-primary transition-all duration-300 select-none cursor-pointer focus-visible:outline focus-visible:outline-2 focus-visible:outline-primary",
           isPlaying ? "pr-5" : ""

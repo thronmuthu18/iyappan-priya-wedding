@@ -4,9 +4,58 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Aria & Julian — Wedding Invitation</title>
-    {/* Preload critical above-the-fold hero image */}
+    
+    <!-- Primary Metadata -->
+    <title>Aria & Julian — Wedding Celebration in Florence, Italy</title>
+    <meta name="description" content="Welcome to the wedding invitation of Aria Montgomery and Julian Westbrook. Join us as we celebrate our love in Florence, Italy on October 24, 2026." />
+    <meta name="keywords" content="Aria and Julian, Aria and Julian Wedding, Wedding Florence, Italy Wedding, Villa Corsini Wedding" />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="https://ariaandjulian2026.com" />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://ariaandjulian2026.com" />
+    <meta property="og:title" content="Aria & Julian — Wedding Celebration in Florence, Italy" />
+    <meta property="og:description" content="Join us as we celebrate our love in Florence, Italy on October 24, 2026. RSVP details and travel logistics inside." />
+    <meta property="og:image" content="https://ariaandjulian2026.com/assets/hero_couple_tuscany.jpg" />
+    <meta property="og:site_name" content="Aria & Julian Wedding" />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="https://ariaandjulian2026.com" />
+    <meta property="twitter:title" content="Aria & Julian — Wedding Celebration in Florence, Italy" />
+    <meta property="twitter:description" content="Join us as we celebrate our love in Florence, Italy on October 24, 2026. RSVP details and travel logistics inside." />
+    <meta property="twitter:image" content="https://ariaandjulian2026.com/assets/hero_couple_tuscany.jpg" />
+
+    <!-- Preload critical above-the-fold hero image -->
     <link rel="preload" href="/src/assets/hero_couple_tuscany.jpg" as="image" type="image/jpeg" />
+
+    <!-- JSON-LD Structured Event Schema -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Event",
+        "name": "Wedding of Aria Montgomery & Julian Westbrook",
+        "startDate": "2026-10-24T16:00:00+02:00",
+        "endDate": "2026-10-25T01:00:00+02:00",
+        "eventStatus": "https://schema.org/EventScheduled",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": {
+          "@type": "Place",
+          "name": "Villa Corsini",
+          "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "Via Castel di Poggio, 21",
+            "addressLocality": "Fiesole",
+            "addressRegion": "Firenze",
+            "postalCode": "50014",
+            "addressCountry": "IT"
+          }
+        },
+        "description": "Join us for the wedding celebration of Aria and Julian at Villa Corsini in Florence, Italy on October 24, 2026.",
+        "image": "https://ariaandjulian2026.com/assets/hero_couple_tuscany.jpg"
+      }
+    </script>
   </head>
   <body>
     <div id="root"></div>
