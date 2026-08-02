@@ -1,8 +1,12 @@
 import { Loader, Hero, Couple, Story, Timeline, Gallery, Events, Countdown, Family, Venue, RSVP, Footer } from '@/components/sections'
 import { Navbar } from '@/components/navigation'
 import { MusicPlayer } from '@/components/shared'
+import { useSmoothScroll } from '@/hooks'
 
 function App() {
+  // Initialize global smooth scrolling and GSAP scroll sync tick loops
+  useSmoothScroll()
+
   return (
     <>
       {/* Intro Preloader screen */}
