@@ -132,7 +132,7 @@ export const Hero: React.FC = () => {
         {/* Tagline / Subtitle (Above Names) */}
         <motion.p
           variants={itemVariants}
-          className="font-display italic text-lg sm:text-xl md:text-2xl text-accent-light/95 max-w-[480px] mb-6 font-light leading-relaxed"
+          className="font-display italic text-[16px] md:text-[20px] text-[#F5E6E0] max-w-[480px] mb-6 font-light leading-relaxed"
         >
           “In the quiet space where our paths crossed, we found our forever home.”
         </motion.p>
@@ -140,7 +140,7 @@ export const Hero: React.FC = () => {
         {/* Wedding Names */}
         <motion.h1
           variants={namesVariants}
-          className="font-script text-7xl sm:text-8xl md:text-9xl text-primary mb-6 filter drop-shadow-[0_4px_12px_rgba(201,169,110,0.15)]"
+          className="font-script text-[64px] md:text-[112px] text-primary mb-6 filter drop-shadow-[0_4px_12px_rgba(201,169,110,0.15)]"
         >
           Aria & Julian
         </motion.h1>
