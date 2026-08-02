@@ -1,10 +1,12 @@
 import React from 'react'
 import { motion, useScroll, useTransform } from 'framer-motion'
 import { Button } from '@/components/ui'
+import { useUIStore } from '@/store'
 import heroImg from '@/assets/hero_couple_tuscany.jpg'
 
 export const Hero: React.FC = () => {
   const { scrollY } = useScroll()
+  const { isLoaderVisible } = useUIStore()
   
   // Parallax transforms (GPU accelerated)
   const bgY = useTransform(scrollY, [0, 800], [0, 200])
@@ -21,13 +23,41 @@ export const Hero: React.FC = () => {
   }
 
   // Animation variants
+  const imgVariants = {
+    hidden: { scale: 1.1, filter: 'blur(16px)', opacity: 0 },
+    visible: {
+      scale: 1.0,
+      filter: 'blur(0px)',
+      opacity: 1,
+      transition: { duration: 1.2, ease: [0.16, 1, 0.3, 1] as const }
+    }
+  }
+
+  const leftOrnamentVariants = {
+    hidden: { opacity: 0, rotate: -48 },
+    visible: {
+      opacity: 0.15,
+      rotate: -45,
+      transition: { duration: 2.0, ease: "easeOut" as const, delay: 0.6 }
+    }
+  }
+
+  const rightOrnamentVariants = {
+    hidden: { opacity: 0, rotate: 48 },
+    visible: {
+      opacity: 0.15,
+      rotate: 45,
+      transition: { duration: 2.0, ease: "easeOut" as const, delay: 0.6 }
+    }
+  }
+
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
       transition: {
         staggerChildren: 0.15,
-        delayChildren: 0.4,
+        delayChildren: 0.8, // starts around 800ms offset
       },
     },
   }
@@ -46,7 +76,7 @@ export const Hero: React.FC = () => {
     visible: {
       opacity: 1,
       scale: 1,
-      transition: { duration: 1.6, ease: [0.22, 1, 0.36, 1] as const },
+      transition: { duration: 1.6, ease: [0.22, 1, 0.36, 1] as const, delay: 0.2 },
     },
   }
 
@@ -57,9 +87,12 @@ export const Hero: React.FC = () => {
         style={{ y: bgY, scale: bgScale }}
         className="absolute inset-0 w-full h-full"
       >
-        <img
+        <motion.img
           src={heroImg}
           alt="Aria and Julian in Tuscany"
+          variants={imgVariants}
+          initial="hidden"
+          animate={isLoaderVisible ? "hidden" : "visible"}
           fetchPriority="high"
           decoding="async"
           className="w-full h-full object-cover object-center filter brightness-[0.8]"
@@ -89,13 +122,25 @@ export const Hero: React.FC = () => {
       {/* Floating Corner Floral Ornaments */}
       <div className="absolute inset-0 pointer-events-none z-10 hidden sm:block">
         {/* Top Left */}
-        <svg viewBox="0 0 100 100" className="absolute top-6 left-6 w-20 h-20 text-primary/15 rotate-[-45deg]">
+        <motion.svg
+          variants={leftOrnamentVariants}
+          initial="hidden"
+          animate={isLoaderVisible ? "hidden" : "visible"}
+          viewBox="0 0 100 100"
+          className="absolute top-6 left-6 w-20 h-20 text-primary rotate-[-45deg]"
+        >
           <path d="M10 90 Q30 50 90 10 M30 80 Q15 60 40 40 M60 40 Q80 15 90 10" fill="none" stroke="currentColor" strokeWidth="1" />
-        </svg>
+        </motion.svg>
         {/* Top Right */}
-        <svg viewBox="0 0 100 100" className="absolute top-6 right-6 w-20 h-20 text-primary/15 rotate-[45deg]">
+        <motion.svg
+          variants={rightOrnamentVariants}
+          initial="hidden"
+          animate={isLoaderVisible ? "hidden" : "visible"}
+          viewBox="0 0 100 100"
+          className="absolute top-6 right-6 w-20 h-20 text-primary rotate-[45deg]"
+        >
           <path d="M90 90 Q70 50 10 10 M70 80 Q85 60 60 40 M40 40 Q20 15 10 10" fill="none" stroke="currentColor" strokeWidth="1" />
-        </svg>
+        </motion.svg>
       </div>
 
       {/* Centered Top Monogram at 12% height */}
@@ -127,7 +172,7 @@ export const Hero: React.FC = () => {
         style={{ y: textY, opacity: textOpacity }}
         variants={containerVariants}
         initial="hidden"
-        animate="visible"
+        animate={isLoaderVisible ? "hidden" : "visible"}
         className="relative z-20 text-center text-text-inverse px-6 flex flex-col items-center max-w-[720px] select-none"
       >
         {/* Overhead tag */}
