@@ -1,4 +1,4 @@
-import { Loader, Hero } from '@/components/sections'
+import { Loader, Hero, Couple } from '@/components/sections'
 import { Navbar } from '@/components/navigation'
 
 function App() {
@@ -9,6 +9,9 @@ function App() {
       
       {/* Cinematic Hero entry section */}
       <Hero />
+
+      {/* Symmetrical Couple profiles section */}
+      <Couple />
       
       {/* Scrollspy test sections */}
       <div id="story" className="h-screen bg-white flex items-center justify-center border-b border-border text-text-primary font-display text-3xl">Our Story Section</div>
