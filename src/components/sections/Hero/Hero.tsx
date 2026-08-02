@@ -60,6 +60,8 @@ export const Hero: React.FC = () => {
         <img
           src={heroImg}
           alt="Aria and Julian in Tuscany"
+          fetchPriority="high"
+          decoding="async"
           className="w-full h-full object-cover object-center filter brightness-[0.8]"
         />
         {/* Double-layered overlays as specified in UI Blueprint */}
@@ -73,6 +75,13 @@ export const Hero: React.FC = () => {
           className="absolute inset-0 z-10"
           style={{
             background: 'radial-gradient(circle, transparent 20%, rgba(26, 23, 20, 0.3) 100%)'
+          }}
+        />
+        {/* Sun Rays Overlay centered behind the names */}
+        <div
+          className="absolute inset-0 z-10 pointer-events-none mix-blend-overlay opacity-20"
+          style={{
+            background: 'radial-gradient(circle at center, rgba(255, 235, 180, 0.6) 0%, rgba(26, 23, 20, 0) 65%)'
           }}
         />
       </motion.div>
