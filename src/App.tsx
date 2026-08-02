@@ -1,10 +1,17 @@
 import { Loader, Hero, Couple, Story, Timeline, Gallery, Events, Countdown, Family, Venue, RSVP, Footer } from '@/components/sections'
 import { Navbar } from '@/components/navigation'
+import { MusicPlayer } from '@/components/shared'
 
 function App() {
   return (
     <>
+      {/* Intro Preloader screen */}
       <Loader />
+
+      {/* Floating Audio Controller */}
+      <MusicPlayer />
+
+      {/* Navigation header */}
       <Navbar />
       
       {/* Cinematic Hero entry section */}
